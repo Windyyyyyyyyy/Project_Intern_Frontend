@@ -73,15 +73,3 @@ tr:nth-child(odd) {
 .icon-plus {
   font-size: 25px;
 }
-
-/* css cho user details */
-.cus-header {
-  font-weight: bold;
-  color: #ac1818;
-  font-size: 36px;
-}
-
-.cus-info {
-  font-size: 20px;
-  padding: 10px 0px 10px;
-}

@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import "bootstrap-icons/font/bootstrap-icons.css";
 // import "bootstrap/dist/css/bootstrap.min.css";
 import "./Sidebar.css";
@@ -8,13 +8,13 @@ function Sidebar() {
     <nav className="left-side">
       <ul>
         <li>
-          <Link to="/">
+          <NavLink to="/admin">
             <img src={imageLogo} alt="logo" />
-          </Link>
+          </NavLink>
         </li>
         <li className="left">
           <i className="fa-3x bi bi-house icon"></i>
-          <NavLink to="/admin" className="nav-link">
+          <NavLink to="/admin" end className="nav-link">
             Dashboard
           </NavLink>
         </li>
