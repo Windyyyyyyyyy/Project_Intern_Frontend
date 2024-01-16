@@ -3,6 +3,7 @@ import "./Login.css";
 import { Link } from "react-router-dom";
 // import google from "../Components/Assets/google.png";
 // import facebook from "../Components/Assets/facebook.png";
+import axios from "axios";
 
 const Login = () => {
   const [phone, setPhone] = useState("");
@@ -16,22 +17,16 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleLogin = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
     const loginData = {
       phone_number: phone,
       password: password,
     };
-
-    fetch("http://localhost:8080/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loginData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
+    axios
+      .post("http://localhost:8080/login", loginData)
+      .then((response) => {
+        console.log(response.data);
       })
       .catch((error) => {
         console.error("Lỗi:", error);
@@ -42,27 +37,29 @@ const Login = () => {
     <div className="login">
       <div className="login-container">
         <h1>LOGIN</h1>
-        <div className="login-fields">
-          <input
-            type="text"
-            placeholder="Phone"
-            value={phone}
-            onChange={handlePhoneChange}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </div>
-        <div className="login-p">
-          <Link to="/signup">
-            <p>Sign up</p>
-          </Link>
-          <p>Forgot password?</p>
-        </div>
-        <button onClick={handleLogin}>Submit</button>
+        <form onSubmit={handleLogin}>
+          <div className="login-fields">
+            <input
+              type="text"
+              placeholder="Phone"
+              value={phone}
+              onChange={handlePhoneChange}
+            />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={handlePasswordChange}
+            />
+          </div>
+          <div className="login-p">
+            <Link to="/register">
+              <p>Sign up</p>
+            </Link>
+            <p>Forgot password?</p>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
         <div className="loginButton google">
           {/* <img src={google} alt="" /> */}
           Google
