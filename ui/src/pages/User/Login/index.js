@@ -27,6 +27,9 @@ const Login = () => {
       .post("http://localhost:8080/login", loginData)
       .then((response) => {
         console.log(response.data);
+        const token = response.data.token;
+        localStorage.setItem("token", token);
+        alert("Dang nhap thanh cong");
       })
       .catch((error) => {
         console.error("Lỗi:", error);

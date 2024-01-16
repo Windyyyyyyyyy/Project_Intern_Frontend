@@ -54,7 +54,7 @@ const Signup = () => {
   };
 
   if (redirectToUserList) {
-    return <Navigate to="/user" />;
+    return <Navigate to="/login" />;
   }
 
   return (

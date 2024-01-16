@@ -31,6 +31,7 @@
   flex-direction: column;
   gap: 29px;
   margin-top: 30px;
+  align-items: center;
 }
 
 .login-fields input {
@@ -44,14 +45,23 @@
 }
 
 .login-p {
-  display: flex;
-  justify-content: space-between;
-  margin-left: 400px;
+  /* display: flex; */
+  /* justify-content: space-between; */
+  /* margin-left: 400px; */
+  float: right;
+  /* margin-top: 20px; */
+}
+
+.login-p a {
+  margin-right: 20px;
 }
 
 .login-p p {
-  margin-right: 50px;
+  display: inline-block;
+  /* margin-right: 50px; */
+  /* margin-left: 20px; */
   white-space: nowrap;
+  margin-right: 15px;
 }
 
 .login-container button {
@@ -59,7 +69,7 @@
   height: 50px;
   color: white;
   background: #ff6c22;
-  margin-top: 30px;
+  margin-top: 20px;
   border: none;
   border-radius: 10px;
   font-size: 24px;
