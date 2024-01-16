@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --height-container: 40px;
+  --width-input-search: 300px;
+  --border-radius: 5px;
+  --black-1: #495057;
+  --black-2: #212529;
+  --black-3: #adb5bd;
+  --black-4: #6c757d;
+  --white-1: #e9ecef;
+  --white-2: #dee2e6;
+  --white-3: #f8f9fa;
+  --white-4: #f5f3f4;
+}
+
+.title h2,
+.container-search {
+  margin-bottom: 40px;
+}
+
+.container-search {
+  display: flex;
+  align-items: center;
+  height: var(--height-container);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 0.5px 0.5px 2px var(--black-3);
+}
+
+.header-table {
+  background-color: var(--white-3);
+  border-bottom: 1px solid var(--white-2);
+}
+
+.header-table th {
+  color: var(--black-4);
+}
+
+.users td {
+  font-weight: 600;
+}
+
+.users th,
+.users td {
+  padding: 8px;
+}
+
+tr:nth-child(odd) {
+  background-color: var(--white-3);
+}
+
+.icon-update {
+  font-size: 20px;
+  color: var(--black-4);
+  -webkit-text-stroke: 0.5px;
+}
+
+.icon-plus {
+  font-size: 25px;
+}
+
+/* css cho user details */
+.cus-header {
+  font-weight: bold;
+  color: #ac1818;
+  font-size: 36px;
+}
+
+.cus-info {
+  font-size: 20px;
+  padding: 10px 0px 10px;
+}
