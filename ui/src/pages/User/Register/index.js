@@ -27,11 +27,13 @@ const Signup = () => {
       const response = await axios.post("http://localhost:8080/register", user);
       console.log(user);
       console.log("Phản hồi:", response.data);
+      alert("Register successfully!");
 
       // Nếu bạn muốn chuyển hướng sau khi đăng ký thành công
       setRedirectToUserList(true);
     } catch (error) {
       console.error("Lỗi trong quá trình đăng ký:", error.message);
+      alert("Register failed!");
 
       // Nếu bạn muốn xử lý các loại lỗi khác nhau
       // Ví dụ, nếu đó là lỗi mạng
@@ -66,43 +68,43 @@ const Signup = () => {
             <input
               type="text"
               placeholder="Firstname"
-              name="first_name"
-              value={user.first_name || ""}
+              name="FirstName"
+              value={user.FirstName || ""}
               onChange={handleChange}
             />
             <input
               type="text"
               placeholder="Lastname"
-              name="last_name"
-              value={user.last_name || ""}
+              name="LastName"
+              value={user.LastName || ""}
               onChange={handleChange}
             />
             <input
               type="text"
               placeholder="Address"
-              name="address"
-              value={user.address || ""}
+              name="Address"
+              value={user.Address || ""}
               onChange={handleChange}
             />
             <input
               type="text"
               placeholder="E-mail"
-              name="email"
-              value={user.email || ""}
+              name="Email"
+              value={user.Email || ""}
               onChange={handleChange}
             />
             <input
-              type="number"
+              type="text"
               placeholder="Phone"
-              name="phone_number"
-              value={user.phone_number || ""}
+              name="PhoneNumber"
+              value={user.PhoneNumber || ""}
               onChange={handleChange}
             />
             <input
               type="password"
               placeholder="Password"
-              name="password"
-              value={user.password || ""}
+              name="Password"
+              value={user.Password || ""}
               onChange={handleChange}
             />
           </div>
