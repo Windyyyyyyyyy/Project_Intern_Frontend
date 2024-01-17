@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { Link } from "react-router-dom";
+import { Navigate } from "react-router";
 // import google from "../Components/Assets/google.png";
 // import facebook from "../Components/Assets/facebook.png";
 import axios from "axios";
@@ -8,6 +9,7 @@ import axios from "axios";
 const Login = () => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
+  const [redirectToUserList, setRedirectToUserList] = useState(false);
 
   const handlePhoneChange = (e) => {
     setPhone(e.target.value);
@@ -29,12 +31,18 @@ const Login = () => {
         console.log(response.data);
         const token = response.data.token;
         localStorage.setItem("token", token);
-        alert("Dang nhap thanh cong");
+        alert("Login successfully!");
+        setRedirectToUserList(true);
       })
       .catch((error) => {
         console.error("Lỗi:", error);
+        alert("Login failed!");
       });
   };
+
+  if (redirectToUserList) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <div className="login">

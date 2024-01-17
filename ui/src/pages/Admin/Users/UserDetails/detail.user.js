@@ -8,11 +8,15 @@ import Popup from "~/component/Popup/Change_Password_Admin";
 
 function DetailUser() {
   const { id } = useParams();
-  console.log(id);
-  const request = "http://localhost:8080/users/" + id;
-  console.log(request);
+  // console.log(id);
+  // const request = "http://localhost:8080/users/" + id;
+  // console.log(request);
   const [user, setUser] = useState({});
   const [btnChange, setBtnchange] = useState(false);
+  let [formChangePass, setFormChangePass] = useState({
+    UserID: Number(id),
+  });
+  const [time, setTime] = useState(false);
 
   useEffect(() => {
     if (id) {
@@ -22,6 +26,31 @@ function DetailUser() {
       });
     }
   }, [id]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormChangePass({
+      ...formChangePass,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(formChangePass);
+    try {
+      await axios
+        .post(`http://localhost:8080/changepassword`, formChangePass)
+        .then((res) => {
+          console.log(res);
+          alert("Changed successfully!");
+        });
+    } catch (error) {
+      console.error("error: " + error);
+      alert("Changed failed!");
+    }
+    setBtnchange(false);
+  };
   return (
     <div className="container">
       <div className="row">
@@ -53,13 +82,28 @@ function DetailUser() {
               Change Password
             </button>
             <Popup trigger={btnChange} setTrigger={setBtnchange}>
-              <form className="formChange">
+              <form className="formChange" onSubmit={handleSubmit}>
                 <input
-                  id="Newpassword"
-                  name="Newpassword"
-                  placeholder="New password"
+                  type="password"
+                  id="Currentpassword"
+                  name="CurrentPassword"
+                  placeholder="Current password"
+                  onChange={handleChange}
                 />
-                <button className="update-btn">Update</button>
+                <input
+                  type="password"
+                  id="Newpassword"
+                  name="NewPassword"
+                  placeholder="New password"
+                  onChange={handleChange}
+                />
+                <button
+                  type="submit"
+                  className="update-btn"
+                  onClick={() => setBtnchange(true)}
+                >
+                  Update
+                </button>
               </form>
             </Popup>
           </div>

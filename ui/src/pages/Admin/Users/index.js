@@ -39,7 +39,7 @@ function Users() {
   }
   return (
     <>
-      <div className="title">
+      <div className="title-user">
         <h2>Users</h2>
       </div>
       <div className="container-search">
