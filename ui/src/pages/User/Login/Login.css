@@ -3,10 +3,10 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
-  height: 80vh;
+  height: 100vh;
   background: #eef5ff;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  /* padding-top: 50px;
+  padding-bottom: 50px; */
 }
 
 .login-container {
@@ -14,16 +14,21 @@
   height: 600px;
   background: white;
   margin: auto;
-  padding: 70px 60px;
+  padding: 50px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .login-container h1 {
-  margin: 20px 0px;
+  /* margin: 20px 0px; */
   text-align: center;
+}
+
+.form-login {
+  width: 100%;
 }
 
 .login-fields {
@@ -36,7 +41,7 @@
 
 .login-fields input {
   height: 72px;
-  width: 550px;
+  width: 100%;
   padding-left: 20px;
   border: 1px solid #c9c9c9;
   outline: none;
@@ -49,7 +54,7 @@
   /* justify-content: space-between; */
   /* margin-left: 400px; */
   float: right;
-  /* margin-top: 20px; */
+  margin-top: 20px;
 }
 
 .login-p a {
@@ -60,28 +65,41 @@
   display: inline-block;
   /* margin-right: 50px; */
   /* margin-left: 20px; */
-  white-space: nowrap;
-  margin-right: 15px;
+  /* white-space: nowrap;
+  margin-right: 15px; */
+  margin-bottom: 0;
+  color: black;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.login-p p:hover {
+  font-weight: 700;
 }
 
 .login-container button {
-  width: 580px;
+  width: 100%;
   height: 50px;
-  color: white;
-  background: #ff6c22;
+  color: black;
+  background: white;
   margin-top: 20px;
-  border: none;
-  border-radius: 10px;
+  border: 2px solid black;
+  /* border-radius: 10px; */
   font-size: 24px;
   font-weight: 500;
   cursor: pointer;
+}
+
+.login-container button:hover {
+  color: white;
+  background-color: black;
 }
 
 .loginButton {
   margin-top: 30px;
   width: 100%;
   height: 50px;
-  border-radius: 10px;
+  /* border-radius: 10px; */
   color: white;
   font-size: 24px;
   font-weight: 500;
@@ -91,9 +109,23 @@
 }
 
 .google {
+  color: red;
+  background-color: white;
+  border: 2px solid red;
+}
+
+.google:hover {
+  color: white;
   background-color: red;
 }
 
 .facebook {
+  color: #507cc0;
+  background-color: white;
+  border: 2px solid #507cc0;
+}
+
+.facebook:hover {
+  color: white;
   background-color: #507cc0;
 }
