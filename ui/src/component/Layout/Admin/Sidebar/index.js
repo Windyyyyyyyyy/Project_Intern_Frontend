@@ -36,6 +36,18 @@ function Sidebar() {
             Users
           </NavLink>
         </li>
+        <li className="left">
+          <i className="bi bi-boxes icon"></i>
+          <NavLink to="categories" className="nav-link">
+            Categories
+          </NavLink>
+        </li>
+        <li className="left">
+          <i className="bi bi-coin icon"></i>
+          <NavLink to="service" className="nav-link">
+            Service
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );
