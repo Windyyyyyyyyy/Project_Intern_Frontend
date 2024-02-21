@@ -7,7 +7,6 @@ function User() {
     <>
       <div className="wrapper-user">
         <Navigation></Navigation>
-        <div id="border"></div>
         <div className="content-user">
           <Outlet />
         </div>
