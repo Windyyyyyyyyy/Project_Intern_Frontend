@@ -27,13 +27,37 @@
   margin-top: 30px;
 }
 
+/* custom camera */
 .content-update__avatar {
-  display: inline-block;
+  /* display: inline-block; */
+  position: relative;
+}
+
+.content-update__avatar--round {
+  position: absolute;
+  right: 15px;
+  top: 150px;
+  background-color: #212529;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  text-align: center;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.content-update__avatar--round i {
+  color: white;
 }
 
 #content-update__avatar__input[type="file"] {
-  z-index: 0  ;
+  position: absolute;
+  right: 0;
+  transform: scale(1.5);
+  opacity: 0;
+  cursor: pointer;
 }
+/* custom camera */
 
 .content-update__inputs {
   width: 50%;

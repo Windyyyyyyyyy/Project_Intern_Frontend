@@ -1,4 +1,4 @@
-import Popup from "~/component/Popup/Change_Password_Admin";
+import Popup from "~/component/Popup";
 import axios from "axios";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -66,7 +66,11 @@ function ChangePassword(props) {
       <button className="change-btn" onClick={() => setBtnSubmit(true)}>
         Change Password
       </button>
-      <Popup trigger={btnSubmit} setTrigger={setBtnSubmit}>
+      <Popup
+        trigger={btnSubmit}
+        setTrigger={setBtnSubmit}
+        title="Change Password"
+      >
         <form className="formChange" onSubmit={handleSubmit}>
           <div className="input">
             <input

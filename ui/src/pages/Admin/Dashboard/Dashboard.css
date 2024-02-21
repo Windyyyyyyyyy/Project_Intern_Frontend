@@ -41,13 +41,13 @@
   align-items: center;
   position: relative;
   margin-bottom: var(--margin-for-bottom);
+  padding: 20px;
 
   /* justify-content: space-around; */
 }
 
 .dashboard__header__avatar {
-  font-size: 150px;
-  padding-left: 20px;
+  margin: 20px;
 }
 
 .dashboard__header__content {

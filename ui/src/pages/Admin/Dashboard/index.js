@@ -6,9 +6,11 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { Toaster } from "sonner";
+import Avatar from "~/component/Avatar";
 function Dashboard() {
   const navigate = useNavigate();
-  const [user, getUser] = useState({});
+  const [image, setImage] = useState();
+  const [user, setUser] = useState({});
 
   //get token from local storage and decode it
   const getTokenFromLocalStorage = localStorage.getItem("token");
@@ -24,7 +26,8 @@ function Dashboard() {
       })
       .then((response) => {
         console.log(response);
-        getUser(response.data);
+        setUser(response.data);
+        setImage(response.data.image.image_path);
       });
   }, []);
 
@@ -35,7 +38,7 @@ function Dashboard() {
   };
 
   const navigateToUpdateInfo = () => {
-    navigate("/admin/updateinfo");
+    navigate("/admin/update-info");
   };
 
   return (
@@ -43,7 +46,9 @@ function Dashboard() {
       <div className="title-dashboard">Dashboard</div>
       <div className="dashboard">
         <div className="dashboard__header">
-          <i className="bi bi-person-circle dashboard__header__avatar"></i>
+          <div className="dashboard__header__avatar">
+            <Avatar path={image} width={200} height={200} />
+          </div>
           <div className="dashboard__header__content">
             <p className="dashboard__header__content__firstly">Welcome back,</p>
             <p className="dashboard__header__content__secondly">Admin User</p>

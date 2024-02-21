@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --black-2: #212529;
+}
+
+.button-component {
+  padding: 10px;
+  background-color: white;
+  border: 3px solid var(--black-2);
+  font-size: 18px;
+  font-weight: 500px;
+}
+
+.button-component:hover {
+  background-color: var(--black-2);
+  color: white;
+}

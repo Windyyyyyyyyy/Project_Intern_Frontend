@@ -73,46 +73,55 @@ function Post() {
       <div className="addProduct-container">
         <div className="addProduct-fields">
           <h4>Hình ảnh sản phẩm</h4>
-          <div className="insert-image">
-            <form
-              className="image-form"
-              action=""
-              onClick={() => {
-                const inputField = document.querySelector(".input-field");
-                inputField.click();
-                inputField.value = null;
-              }}
-            >
-              <input
-                type="file"
-                accept="image/*"
-                className="input-field"
-                hidden
-                onChange={onImageChange}
-              />
-              {image ? (
-                <img
-                  src={image}
-                  width={300}
-                  height={300}
-                  alt="images product"
+          {image ? (
+            <>
+              <div className="container__images">
+                <div className="container__images__wrapper">
+                  <div className="container__images__wrapper__input">
+                    <div className="container__images__wrapper__input--center">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="input-field-have-image"
+                        hidden
+                        multiple
+                        onChange={onImageChange}
+                      />
+                      <i className="bi bi-plus"></i>
+                    </div>
+                  </div>
+                  <div className="container__images__wrapper__display">
+                    <div className="container__images__wrapper__display--center">
+                      <i className="bi bi-x-circle-fill"></i>
+                      <img src={image} alt="" height={80} />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
+          ) : (
+            <div className="insert-image">
+              <form
+                className="image-form"
+                action=""
+                onClick={() => {
+                  const inputField = document.querySelector(".input-field");
+                  inputField.click();
+                  inputField.value = null;
+                }}
+              >
+                <input
+                  type="file"
+                  accept="image/*"
+                  className="input-field"
+                  hidden
+                  onChange={onImageChange}
                 />
-              ) : (
-                <>
-                  <img src={CloudUpload} alt="icon upload" />
-                  <p>Browse File to upload</p>
-                </>
-              )}
-            </form>
-            <button
-              className="btnDeleteImage"
-              onClick={() => {
-                setImage(null);
-              }}
-            >
-              Xóa
-            </button>
-          </div>
+                <img src={CloudUpload} alt="icon upload" />
+                <p>Browse File to upload</p>
+              </form>
+            </div>
+          )}
         </div>
         <div className="addProduct-fields">
           <div className="addProduct-info">
