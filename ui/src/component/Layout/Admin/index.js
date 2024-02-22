@@ -6,7 +6,7 @@ function Admin() {
   return (
     <>
       <div className="wrapper">
-        <Sidebar></Sidebar>
+        <Sidebar className="sidebar"></Sidebar>
         <div id="border"></div>
         <div className="content">
           <Outlet />
