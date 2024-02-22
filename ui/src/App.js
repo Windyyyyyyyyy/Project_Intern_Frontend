@@ -28,6 +28,7 @@ function App() {
   return (
     <Router>
       <Routes>
+        {/* User */}
         <Route path="login" element={<LoginUser />} />
         <Route path="register" element={<RegisterUser />} />
         <Route path="/" element={<User />}>
@@ -43,6 +44,7 @@ function App() {
           <Route path="my-info/update-info" element={<MyInfoDetails />} />
           <Route path="balances" element={<Balances />} />
         </Route>
+        {/* Admin */}
         <Route path="adminlogin" element={<LoginAdmin />} />
         <Route path="admin/" element={<Admin />}>
           <Route index element={<Dashboard />} />
