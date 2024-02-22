@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import "./Login.css";
-import { Link } from "react-router-dom";
-// import google from "../Components/Assets/google.png";
-// import facebook from "../Components/Assets/facebook.png";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { Toaster } from "sonner";
+import { toast } from "sonner";
+import "bootstrap-icons/font/bootstrap-icons.css";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,60 +19,71 @@ const Login = () => {
     setPassword(e.target.value);
   };
 
-  const handleLogin = () => {
+  //Login
+  const handleLogin = async (e) => {
+    e.preventDefault();
     const loginData = {
       phone_number: phone,
       password: password,
     };
-
-    fetch("http://localhost:8080/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loginData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-      })
-      .catch((error) => {
-        console.error("Lỗi:", error);
-      });
+    if (loginData.phone_number === "" || loginData.password === "") {
+      toast.warning("Phone number/Password is required!");
+    }
+    try {
+      await axios
+        .post("http://localhost:8080/login", loginData)
+        .then((response) => {
+          console.log(response);
+          if (response && response.data.token) {
+            const token = response.data.token;
+            localStorage.setItem("token", token);
+            toast.success(response.data.message);
+          }
+          // set timeout redirect
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
+        });
+    } catch (error) {
+      if (error.response && error.response.status === 400) {
+        toast.error(error.response.data.message);
+      } else {
+        toast.error(error.response.data.message);
+      }
+      console.error("Lỗi:", error.message);
+    }
   };
 
   return (
-    <div className="login">
-      <div className="login-container">
-        <h1>LOGIN</h1>
-        <div className="login-fields">
-          <input
-            type="text"
-            placeholder="Phone"
-            value={phone}
-            onChange={handlePhoneChange}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-        </div>
-        <div className="login-p">
-          <Link to="/signup">
-            <p>Sign up</p>
-          </Link>
-          <p>Forgot password?</p>
-        </div>
-        <button onClick={handleLogin}>Submit</button>
-        <div className="loginButton google">
-          {/* <img src={google} alt="" /> */}
-          Google
-        </div>
-        <div className="loginButton facebook">
-          {/* <img src={facebook} alt="" /> */}
-          Facebook
+    <>
+      <div className="login">
+        <div className="login-container">
+          <h1>LOGIN</h1>
+          <form onSubmit={handleLogin} className="form-login">
+            <div className="login-fields">
+              <input
+                type="text"
+                placeholder="Phone"
+                value={phone}
+                onChange={handlePhoneChange}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+            </div>
+            <div className="login-p">
+              <Link to="/register">
+                <p>Sign up</p>
+              </Link>
+              <p>Forgot password?</p>
+            </div>
+            <button type="submit">Submit</button>
+          </form>
+          <div className="loginButton google">Google</div>
+          <div className="loginButton facebook">Facebook</div>
         </div>
       </div>
       <Toaster
