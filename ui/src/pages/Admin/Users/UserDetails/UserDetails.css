@@ -1,0 +1,100 @@
+:root {
+  --height-container: 40px;
+  --width-input-search: 300px;
+  --border-radius: 5px;
+  --black-1: #495057;
+  --black-2: #212529;
+  --black-3: #adb5bd;
+  --black-4: #6c757d;
+  --white-1: #e9ecef;
+  --white-2: #dee2e6;
+  --white-3: #f8f9fa;
+  --white-4: #f5f3f4;
+}
+.cus-header {
+  font-weight: bold;
+  color: #ac1818;
+  font-size: 36px;
+}
+
+.cus-info {
+  font-size: 20px;
+  padding: 10px 0px 10px;
+}
+
+.cus-info span {
+  font-weight: 700;
+}
+
+.change-btn {
+  margin-top: 30px;
+  padding: 10px;
+  background-color: #fff;
+  border: 3px solid var(--black-2);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.change-btn:hover {
+  background-color: var(--black-2);
+  color: #fff;
+}
+
+.formChange {
+  display: flex;
+  /* justify-content: center; */
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+}
+
+.formChange .input {
+  display: flex;
+  align-items: center;
+  width: 60%;
+  height: 20%;
+  position: relative;
+}
+
+#Newpassword,
+#Currentpassword {
+  width: 100%;
+  height: 100%;
+  padding-left: 10px;
+  /* margin-bottom: 20px; */
+}
+
+.icon-show {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+.icon-show:hover {
+  -webkit-text-stroke: 0.5px;
+}
+
+.icon-hide {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+.icon-hide:hover {
+  -webkit-text-stroke: 0.5px;
+}
+
+.update-btn {
+  width: 20%;
+  height: 20%;
+  background-color: #fff;
+  border: 2px solid var(--black-2);
+  font-weight: 500;
+}
+
+.update-btn:hover {
+  background-color: var(--black-2);
+  color: #fff;
+}

@@ -1,0 +1,35 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.formAddNewCate {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.formAddNewCate input {
+  width: 60%;
+  height: 20%;
+  padding: 5px;
+}
+
+.formAddNewCate button {
+  height: 20%;
+  width: 30%;
+  padding: 10px;
+  background-color: #fff;
+  border: 3px solid var(--black-2);
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.formAddNewCate button:hover {
+  background-color: var(--black-2);
+  color: #fff;
+}

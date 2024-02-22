@@ -1,0 +1,111 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --black-1: #495057;
+  --black-2: #212529;
+  --black-3: #adb5bd;
+  --black-4: #6c757d;
+  --white-1: #e9ecef;
+  --white-2: #dee2e6;
+  --white-3: #f8f9fa;
+  --white-4: #f5f3f4;
+}
+
+.navigation__wrapper {
+  position: sticky;
+  box-shadow: 0 3px 5px rgba(57, 63, 72, 0.2);
+  transition-duration: 0.2s;
+  font-size: 0.825rem;
+}
+
+.navigation__wrapper__inner {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.navigation__wrapper__inner__logo {
+  padding: 10px 0px;
+  cursor: pointer;
+}
+
+.navigation__wrapper__inner__search {
+  width: 40%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.navigation__wrapper__inner__search input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+  border: 1px solid var(--black-2);
+}
+
+.navigation__wrapper__inner__search input:focus {
+  outline: none;
+}
+
+.navigation__wrapper__inner__search__button {
+  height: 100%;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+}
+
+.navigation__wrapper__inner__search__button Button {
+  padding: 5px 20px;
+  border: none;
+  background-color: var(--black-2);
+  color: #fff;
+  border-radius: 5px;
+}
+
+.navigation__wrapper__inner__items {
+  display: flex;
+  align-items: center;
+}
+
+.navigation__wrapper__inner__items__icon {
+  font-size: 1.9rem;
+  margin-right: 60px;
+}
+
+.navigation__wrapper__inner__items__icon a {
+  color: inherit;
+}
+
+.navigation__wrapper__inner__items__icon:hover {
+  -webkit-text-stroke: 1px;
+  cursor: pointer;
+}
+
+.navigation__wrapper__inner__items__profile {
+  display: flex;
+  align-items: center;
+  padding: 5px;
+}
+
+.navigation__wrapper__inner__items__profile:hover {
+  background-color: var(--white-1);
+  cursor: pointer;
+}
+
+.navigation__wrapper__inner__items__profile__avatar {
+  margin-right: 5px;
+}
+
+.navigation__wrapper__inner__items__profile img {
+  border: none;
+}
+
+.navigation__wrapper__inner__button Button {
+  padding: 5px 40px;
+}

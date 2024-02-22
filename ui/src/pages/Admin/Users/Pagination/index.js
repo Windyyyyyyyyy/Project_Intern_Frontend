@@ -19,7 +19,6 @@ function Pagination(props) {
   const { pagination, onPageChange } = props;
   const { page, total_pages } = pagination;
   // console.log(pagination);
-  // const totalPages = Math.ceil(total_rows / limit);
 
   function handlePageChange(newPage) {
     if (onPageChange) {
@@ -41,7 +40,8 @@ function Pagination(props) {
         ></button>
       </div>
       <div className="page-number">
-        Showing results<span>{page}</span>to<span>{total_pages}</span>
+        Showing results<span>{page <= total_pages ? page : total_pages}</span>to
+        <span>{total_pages}</span>
       </div>
     </>
   );
