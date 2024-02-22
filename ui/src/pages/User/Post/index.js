@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Post.css";
 import CloudUpload from "~/assets/images/upload.png";
 import axios from "axios";
 
+
 function Post() {
+  //form data
   const [image, setImage] = useState(null);
   const [selectedImage, setSelectedImage] = useState([]);
   const [categoryId, setCategoryId] = useState(null);
@@ -12,6 +14,7 @@ function Post() {
   const [quantity, setQuantity] = useState(null);
   const [description, setDescription] = useState("");
   const [textareaValue, setTextareaValue] = useState("");
+  const [dropdown, setDropdown] = useState([])
 
   console.log("category: ", categoryId);
 
@@ -67,7 +70,25 @@ function Post() {
     );
     console.log(result.data);
   };
-
+  useEffect(() => {
+    // Revoke the data uris to free up memory
+    return () => selectedImage.forEach((file) => URL.revokeObjectURL(file));
+  }, [selectedImage]);
+  const handleRemoveImage = (index) => {
+    // Revoke the object URL of the removed image
+    URL.revokeObjectURL(selectedImage[index]);
+    setSelectedImage(selectedImage.filter((_, i) => i !== index));
+  };
+  useEffect(() => {
+    axios.get("http://localhost:8080/categories-dropdown")
+    .then((res) => {
+      console.log(res.data.categories)
+      setDropdown(res.data.categories)
+    })
+    .catch((error) => {
+      console.log("error ", error)
+    })
+  }, [])
   return (
     <div className="addProduct">
       <div className="addProduct-container">
@@ -78,7 +99,13 @@ function Post() {
               <div className="container__images">
                 <div className="container__images__wrapper">
                   <div className="container__images__wrapper__input">
-                    <div className="container__images__wrapper__input--center">
+                    <div className="container__images__wrapper__input--center"
+                      onClick={() => {
+                        const inputField = document.querySelector(".input-field-have-image");
+                        inputField.click();
+                        inputField.value = null;
+                      }}
+                    >
                       <input
                         type="file"
                         accept="image/*"
@@ -91,11 +118,17 @@ function Post() {
                     </div>
                   </div>
                   <div className="container__images__wrapper__display">
-                    <div className="container__images__wrapper__display--center">
-                      <i className="bi bi-x-circle-fill"></i>
-                      <img src={image} alt="" height={80} />
-                    </div>
+                    {selectedImage.map((item, index) => {
+                      const imageUrl = URL.createObjectURL(item);
+                      return (
+                        <div key={index} className="container__images__wrapper__display--center">
+                          <i className="bi bi-x-circle-fill" onClick={() => handleRemoveImage(index)}></i>
+                          <img src={imageUrl} alt="" height={80} width={140} />
+                        </div>
+                      );
+                    })}
                   </div>
+
                 </div>
               </div>
             </>
@@ -138,10 +171,11 @@ function Post() {
                   value={categoryId}
                   onChange={(e) => setCategoryId(e.target.value)}
                 >
-                  <option value="1">Xe máy</option>
-                  <option value="2">Ô tô</option>
-                  <option value="3">Thú cưng</option>
-                  <option value="4">Thời trang</option>
+                  {dropdown.map((item) => {
+                    return (
+                      <option value={item.category_id}>{item.category_name}</option>
+                    );
+                  })}
                 </select>
               </div>
               <div className="formInput">
@@ -185,7 +219,7 @@ function Post() {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 }
 
