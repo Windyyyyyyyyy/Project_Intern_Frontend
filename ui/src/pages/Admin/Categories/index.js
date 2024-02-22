@@ -54,7 +54,7 @@ function Categories() {
                 </td>
                 <td>{category.category_id}</td>
                 <td>{category.category_name}</td>
-                <td>{category.is_active}</td>
+                <td>{category.is_active ? "True" : "False"}</td>
               </tr>
             ))}
           </tbody>
