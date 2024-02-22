@@ -14,9 +14,12 @@
   justify-content: space-evenly;
   padding: 10px;
 }
-
+.addProduct-fields:first-child{
+  width: 30%;
+  margin-right: 50px;
+}
 .addProduct-fields:last-child {
-  width: 50%; /* Đặt chiều rộng mong muốn cho phần "Thông tin chi tiết" */
+  width: 70%; /* Đặt chiều rộng mong muốn cho phần "Thông tin chi tiết" */
 }
 
 .image-form {
@@ -61,13 +64,17 @@
 }
 
 .container__images__wrapper__display {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
   margin-right: 15px;
   position: relative;
 }
 
 .container__images__wrapper__display--center {
   border: 0.5px solid black;
-  position: absolute;
+  //position: absolute;
 }
 
 .container__images__wrapper__display--center i {
@@ -197,4 +204,7 @@
   background-color: #000;
   color: white;
   font-weight: 500;
+}
+.bi-x-circle-fill{
+  cursor: pointer;
 }
