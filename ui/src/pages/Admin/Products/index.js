@@ -48,8 +48,8 @@ function Products() {
       page: newPage,
     });
   }
-  console.log("product: ", products)
-  console.log("product.rows: ", products.rows)
+  console.log("product: ", products);
+  console.log("product.rows: ", products.rows);
   return (
     <>
       <div className="title-user">
@@ -96,9 +96,21 @@ function Products() {
                 </td>
                 <td>{product.product_id}</td>
                 <td>{product.product_name}</td>
-                <td>{product.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
+                <td>
+                  {product.price.toLocaleString("en-US", {
+                    style: "currency",
+                    currency: "USD",
+                  })}
+                </td>
                 <td>{product.quantity}</td>
-                <td><img src={product.product_images[0]?.image.path} width="100" height="100" /></td>
+                <td>
+                  <img
+                    src={product.product_images[0]?.image.path}
+                    width="100"
+                    height="100"
+                    alt=""
+                  />
+                </td>
                 {/* <td>{product.phone_number}</td> */}
               </tr>
             ))}
