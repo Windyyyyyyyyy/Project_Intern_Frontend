@@ -23,19 +23,19 @@ function Products() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/admin/getAllProduct`, {
+      .get(`http://localhost:8080/admin/products`, {
         headers: {
           Authorization: `Bearer ${getTokenFromLocalStorage()}`,
         },
       })
       .then((res) => {
         console.log(res);
-        setProducts(res.data);
+        setProducts(res.data.rows);
       })
       .catch((error) => {
         if (error.response) toast.error(error.response.data.message);
       });
-  });
+  }, []);
 
   const handleSubmit = () => {};
 
@@ -48,6 +48,8 @@ function Products() {
       page: newPage,
     });
   }
+  console.log("product: ", products)
+  console.log("product.rows: ", products.rows)
   return (
     <>
       <div className="title-user">
@@ -80,7 +82,7 @@ function Products() {
               <th>NAME</th>
               <th>PRICE</th>
               <th>QUANTITY</th>
-              <th>PRODUCT_IMAGES</th>
+              <th>PRODUCT IMAGES</th>
               {/* <th>PHONE NUMBER</th> */}
             </tr>
           </thead>
@@ -94,9 +96,9 @@ function Products() {
                 </td>
                 <td>{product.product_id}</td>
                 <td>{product.product_name}</td>
-                <td>{product.price}</td>
+                <td>{product.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</td>
                 <td>{product.quantity}</td>
-                <td>{product.product_images[0]}</td>
+                <td><img src={product.product_images[0]?.image.path} width="100" height="100" /></td>
                 {/* <td>{product.phone_number}</td> */}
               </tr>
             ))}
